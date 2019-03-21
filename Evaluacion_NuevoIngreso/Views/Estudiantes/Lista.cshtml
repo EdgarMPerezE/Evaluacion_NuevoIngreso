@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Evaluacion_NuevoIngreso.Models.Estudiantes>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Lista Alumnos";
+}
+
+<h2>
+    Lista Alumnos
+</h2>
+
+<table class="table tab-pane">
+    <tr>
+        <th class="text-center">
+            Id
+        </th>
+        <th class="text-center">
+            Nombre
+        </th>
+        <th class="text-center">
+            Fecha de Nacimeinto
+        </th>
+        <th class="text-center">
+            @Html.ActionLink("Registrar Estudiante", "Crear", new { id = "" }, new { @class = "btn btn-success" })
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.PrimerApellido)
+                @Html.DisplayFor(modelItem => item.SegundoApellido)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Nacimiento)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Actualizar", "Actualizar", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+</table>
